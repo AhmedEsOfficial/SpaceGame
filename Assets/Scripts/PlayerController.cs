@@ -135,7 +135,8 @@ public class PlayerController : MonoBehaviour
         {
             if (!_brake)
             {
-                LookAtMouse();
+                //LookAtMouse(); old rotation
+                ApplyRotation(); //newSmootherRotation
 
                 ApplyMovement();
 
@@ -147,6 +148,18 @@ public class PlayerController : MonoBehaviour
         }
         
         
+    }
+
+    void ApplyRotation()
+    {
+        Vector2 turn = Input.mousePosition;
+        Ray desiredDirection = Camera.main.ScreenPointToRay(turn);
+        if (Mathf.Abs(turn.x - _screenMidpoint.x ) > noRotationMouseZone && Mathf.Abs(turn.y - _screenMidpoint.y) > noRotationMouseZone)
+        {
+            Vector3 oldPoint = transform.forward;
+            Vector3 newPoint = -desiredDirection.direction;
+            CalculateTorque(oldPoint, newPoint, 1);
+        }
     }
     private void LookAtMouse()
     {
@@ -235,7 +248,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(_thrustRatio.z * transform.forward);
             rb.AddForce(_thrustRatio.x * -transform.right);
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, 350);
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, 400);
         }
 
         if (_turbo )

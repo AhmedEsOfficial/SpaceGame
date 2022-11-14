@@ -6126,7 +6126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1211040755
 Transform:
   m_ObjectHideFlags: 0
@@ -12620,9 +12620,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1fb96ad76a33d644832e04944b2e52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVelocity: {x: 100, y: 0, z: 100}
-  rotationSpeed: 15
-  noRotationMouseZone: 50
+  maxVelocity: {x: 300, y: 0, z: 300}
+  rotationSpeed: 50
+  noRotationMouseZone: 30
   turboCooldown: 0
   turboStrength: 4
   brakingStrength: 120
