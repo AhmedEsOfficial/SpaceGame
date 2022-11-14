@@ -156,17 +156,21 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 turn = Input.mousePosition;
         Ray desiredDirection = Camera.main.ScreenPointToRay(turn);
-        transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (desiredDirection.direction), Time.deltaTime * 5f); // Using transform
-
         /*
-         Using physics
+        if ( Mathf.Abs(turn.x - _screenMidpoint.x) > noRotationMouseZone &&
+            Mathf.Abs(turn.y - _screenMidpoint.y) > noRotationMouseZone)
+        {
+            rb.rotation = Quaternion.Slerp (rb.rotation, Quaternion.LookRotation (desiredDirection.direction), Time.deltaTime * rotationSpeed); // Using transform
+        }
+*/
+       
         if (Mathf.Abs(turn.x - _screenMidpoint.x ) > noRotationMouseZone && Mathf.Abs(turn.y - _screenMidpoint.y) > noRotationMouseZone)
         {
             Vector3 oldPoint = transform.forward;
             Vector3 newPoint = -desiredDirection.direction;
             CalculateTorque(oldPoint, newPoint, 1);
         }
-        */ 
+        
     }
     private void LookAtMouse()
     {
@@ -255,13 +259,13 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(_thrustRatio.z * transform.forward);
             rb.AddForce(_thrustRatio.x * -transform.right);
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, 400);
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, 1000);
         }
 
         if (_turbo )
         {
             
-            rb.AddForce(transform.forward * maxVelocity.z * turboStrength, ForceMode.Impulse);
+            rb.AddForce(transform.forward * maxVelocity.z * turboStrength, ForceMode.Force);
             _turbo = false;
             _turboOnCoolDown = true;
             StartCoroutine(TurboCountDown());

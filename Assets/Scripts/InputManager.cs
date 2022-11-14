@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     public List<MouseButton> MouseButtons;
     public List<SpaceGun> SpaceGuns;
     public Dictionary<MouseButton, SpaceGun> gunInputDict;
+    private Vector3 _mousePos;
 
 
     // Start is called before the first frame update
@@ -28,6 +29,14 @@ public class InputManager : MonoBehaviour
     {
         foreach (var mb in gunInputDict.Keys)
         {
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                gunInputDict[mb].AimOn = true;
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                gunInputDict[mb].AimOn = false;
+            }
             if(Input.GetMouseButton((int) mb))
             {
                 gunInputDict[mb].Shoot();
@@ -36,6 +45,7 @@ public class InputManager : MonoBehaviour
             {
                 gunInputDict[mb].StopShooting();
             }
+            
         }
         
     }

@@ -26,7 +26,7 @@ public class SpaceGun : MonoBehaviour
 
     private bool _isOnCoolDown;
 
-    private bool _aimOn;
+    public bool AimOn { get; set; }
 
     private bool _shootCommand;
 
@@ -85,14 +85,7 @@ public class SpaceGun : MonoBehaviour
                 _as.Stop();
             }
 
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                _aimOn = true;
-            }
-            if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                _aimOn = false;
-            }
+            
         }
         
     }
@@ -121,7 +114,7 @@ public class SpaceGun : MonoBehaviour
     {
         if (isPlayer)
         {
-            if (_aimOn)
+            if (AimOn)
             {
                 Ray aim = Camera.main.ScreenPointToRay(Input.mousePosition);
                 direction = aim.direction;
