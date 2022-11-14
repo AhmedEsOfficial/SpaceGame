@@ -12621,8 +12621,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxVelocity: {x: 300, y: 0, z: 300}
-  rotationSpeed: 50
-  noRotationMouseZone: 0
+  rotationSpeed: 25
+  noRotationMouseZone: 10
   turboCooldown: 0
   turboStrength: 4
   brakingStrength: 300
