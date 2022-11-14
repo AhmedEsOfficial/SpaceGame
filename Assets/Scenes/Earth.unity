@@ -12622,10 +12622,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxVelocity: {x: 300, y: 0, z: 300}
   rotationSpeed: 50
-  noRotationMouseZone: 30
+  noRotationMouseZone: 0
   turboCooldown: 0
   turboStrength: 4
-  brakingStrength: 120
+  brakingStrength: 300
   rb: {fileID: 7260181798049807049}
   takingInput: 0
 --- !u!114 &7260181798049807052

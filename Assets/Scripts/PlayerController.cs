@@ -154,12 +154,17 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 turn = Input.mousePosition;
         Ray desiredDirection = Camera.main.ScreenPointToRay(turn);
+        transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (desiredDirection.direction), Time.deltaTime * 5f); // Using transform
+
+        /*
+         Using physics
         if (Mathf.Abs(turn.x - _screenMidpoint.x ) > noRotationMouseZone && Mathf.Abs(turn.y - _screenMidpoint.y) > noRotationMouseZone)
         {
             Vector3 oldPoint = transform.forward;
             Vector3 newPoint = -desiredDirection.direction;
             CalculateTorque(oldPoint, newPoint, 1);
         }
+        */ 
     }
     private void LookAtMouse()
     {
