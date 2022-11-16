@@ -6,12 +6,14 @@ using UnityEngine;
 public class GravityProjectile : MonoBehaviour
 {
     public Rigidbody objectPhysics;
+    
 
     public References references;
     public float gravityConstant;
 
     public bool lockOrbit;
 
+    public List<string> targetTags;
 
     Transform target;
 
@@ -33,18 +35,22 @@ public class GravityProjectile : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Enviroment"))
+        foreach (var tag in targetTags)
         {
-            GravityProperty gp =  other.GetComponent<GravityProperty>();
-            if (!gp.hasChangedGravityOnce)
+            if (other.CompareTag(tag))
             {
-                gp.hasChangedGravityOnce = true;
-                gp.ResetGravity();
-                gp.LockOrbit(false);
-                gp.AddGravityObject(objectPhysics);
-                gp.AssignGravityConstant(gravityConstant);
-            }
+                GravityProperty gp =  other.GetComponent<GravityProperty>();
+                if (!gp.hasChangedGravityOnce)
+                {
+                    gp.hasChangedGravityOnce = true;
+                    gp.ResetGravity();
+                    gp.LockOrbit(false);
+                    gp.AddGravityObject(objectPhysics);
+                    gp.AssignGravityConstant(gravityConstant);
+                }
 
+            }
         }
+        
     }
 }

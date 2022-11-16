@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ExplosiveProjectile : MonoBehaviour
 {
-    public string targetTag;
+    public List<string> targetTags;
     private Rigidbody _rb;
     private bool _exploding;
     public float timeBeforeExplosion;
@@ -27,7 +27,7 @@ public class ExplosiveProjectile : MonoBehaviour
             foreach (Rigidbody enemy in _enemiesInRadius)
             {
                 print(enemy.gameObject.name);
-                enemy.AddExplosionForce(100f,transform.position, 50f);
+                enemy.AddExplosionForce(10000f,transform.position, 50f);
             }
         }
     }
@@ -39,27 +39,36 @@ public class ExplosiveProjectile : MonoBehaviour
         _exploding = true;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {                    
+    private void OnTriggerStay(Collider other)
+    {
 
-        
-        if (other.gameObject.CompareTag(targetTag) )
+        foreach (var tTag in targetTags)
         {
-            if (_exploding)
+            if (other.gameObject.CompareTag(tTag) )
             {
-                _enemiesInRadius.Add(other.GetComponent<Rigidbody>());
+                Rigidbody rb = other.GetComponent<Rigidbody>();
+                if (_exploding && !_enemiesInRadius.Contains(rb))
+                {
+                    _enemiesInRadius.Add(rb);
                     
-            }
+                }
             
+            }
         }
+        
+        
         
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag(targetTag))
+        foreach (var tTag in targetTags)
         {
-            _enemiesInRadius.Remove(other.GetComponent<Rigidbody>());
+            if (other.gameObject.CompareTag(tTag))
+            {
+                _enemiesInRadius.Remove(other.GetComponent<Rigidbody>());
+            }
         }
+        
     }
 }
