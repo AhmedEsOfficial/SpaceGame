@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour
         if ( Mathf.Abs(turn.x - _screenMidpoint.x) > noRotationMouseZone &&
             Mathf.Abs(turn.y - _screenMidpoint.y) > noRotationMouseZone)
         {
-            rb.rotation = Quaternion.Slerp (rb.rotation, Quaternion.LookRotation (desiredDirection.direction), Time.deltaTime * rotationSpeed); // Using transform
+            rb.rotation = Quaternion.Lerp(rb.rotation, Quaternion.LookRotation (desiredDirection.direction), Time.deltaTime * rotationSpeed); // Using transform
         }
         
 
