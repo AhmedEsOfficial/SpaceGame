@@ -289,4 +289,9 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(Vector3.MoveTowards(new Vector3(0,0,0),-rb.velocity, brakingStrength * Time.deltaTime), ForceMode.Impulse);
         rb.AddTorque(Vector3.MoveTowards(new Vector3(0,0,0), -rb.angularVelocity, brakingStrength * Time.deltaTime), ForceMode.Impulse);
     }
+
+    public void Die()
+    {
+        Debug.Log("I am a dead thing now");
+    }
 }
