@@ -12,10 +12,6 @@ public class References : MonoBehaviour
     private CameraController _cameraController;
 
     
-    
-     
-
-    public List<Rigidbody> activeBulletsInScene;
     private void Awake()
     {
         _playerController = player.GetComponent<PlayerController>();

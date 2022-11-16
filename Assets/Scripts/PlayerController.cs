@@ -160,11 +160,12 @@ public class PlayerController : MonoBehaviour
         if ( Mathf.Abs(turn.x - _screenMidpoint.x) > noRotationMouseZone &&
             Mathf.Abs(turn.y - _screenMidpoint.y) > noRotationMouseZone)
         {
-            rb.rotation = Quaternion.Slerp (rb.rotation, Quaternion.LookRotation (desiredDirection.direction), Time.deltaTime * rotationSpeed); // Using transform
+            rb.rotation = Quaternion.Lerp(rb.rotation, Quaternion.LookRotation (desiredDirection.direction), Time.deltaTime * rotationSpeed); // Using transform
         }
         
 
         /*
+         Alternative
          if (Mathf.Abs(turn.x - _screenMidpoint.x ) > noRotationMouseZone && Mathf.Abs(turn.y - _screenMidpoint.y) > noRotationMouseZone)
          {
              Vector3 oldPoint = transform.forward;
@@ -288,5 +289,10 @@ public class PlayerController : MonoBehaviour
         
         rb.AddForce(Vector3.MoveTowards(new Vector3(0,0,0),-rb.velocity, brakingStrength * Time.deltaTime), ForceMode.Impulse);
         rb.AddTorque(Vector3.MoveTowards(new Vector3(0,0,0), -rb.angularVelocity, brakingStrength * Time.deltaTime), ForceMode.Impulse);
+    }
+
+    public void Die()
+    {
+        Debug.Log("I am a dead thing now");
     }
 }
