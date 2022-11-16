@@ -47,7 +47,7 @@ public class SpaceGun : MonoBehaviour
             {
                 if (gunType == GunType.Gravity)
                 {
-                    ShootGravity();
+                    CreateBullet(transform.forward);
 
                 }
                 if (gunType == GunType.Kinetic)

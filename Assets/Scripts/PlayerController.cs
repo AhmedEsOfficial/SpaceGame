@@ -165,6 +165,7 @@ public class PlayerController : MonoBehaviour
         
 
         /*
+         Alternative
          if (Mathf.Abs(turn.x - _screenMidpoint.x ) > noRotationMouseZone && Mathf.Abs(turn.y - _screenMidpoint.y) > noRotationMouseZone)
          {
              Vector3 oldPoint = transform.forward;

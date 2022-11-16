@@ -5261,6 +5261,7 @@ MonoBehaviour:
   gravityConstant: 50
   lockOrbit: 0
   isEnemyProjectile: 0
+  hasChangedGravityOnce: 0
 --- !u!4 &383537996 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4387678931267766, guid: 1818e1a170ef94c3aacee2ba50057521,
@@ -5291,7 +5292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 398414489}
   m_LocalRotation: {x: -0, y: -0.00000011920926, z: -0, w: 1}
-  m_LocalPosition: {x: -5.42, y: 0, z: 8.73}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5597,7 +5598,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 5712017781574680003}
   camera: {fileID: 8896154468966520391}
-  activeBulletsInScene: []
 --- !u!1 &587094682
 GameObject:
   m_ObjectHideFlags: 0
@@ -10860,7 +10860,7 @@ GameObject:
   - component: {fileID: 822593651}
   m_Layer: 0
   m_Name: Asteroid
-  m_TagString: Untagged
+  m_TagString: Enviroment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10915,6 +10915,7 @@ MonoBehaviour:
   gravityConstant: 0.1
   lockOrbit: 1
   isEnemyProjectile: 0
+  hasChangedGravityOnce: 0
 --- !u!135 &822593651
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11025,7 +11026,7 @@ MonoBehaviour:
   MouseButtons: 0000000001000000
   SpaceGuns:
   - {fileID: 1660336987}
-  - {fileID: 983669591}
+  - {fileID: 1919437872}
 --- !u!1 &983669588
 GameObject:
   m_ObjectHideFlags: 0
@@ -11043,7 +11044,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &983669589
 Transform:
   m_ObjectHideFlags: 0
@@ -11189,7 +11190,7 @@ GameObject:
   - component: {fileID: 1067398782}
   m_Layer: 0
   m_Name: Traps
-  m_TagString: Untagged
+  m_TagString: Enviroment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11394,6 +11395,7 @@ MonoBehaviour:
   gravityConstant: 0.2
   lockOrbit: 1
   isEnemyProjectile: 0
+  hasChangedGravityOnce: 0
 --- !u!135 &1283600402
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -12015,8 +12017,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b669f0f40b365542b2eb1710f49de47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRange: 4000
-  amountToSpawn: 500
+  spawnRange: 2000
+  amountToSpawn: 1000
   objectToSpawn: {fileID: 822593644}
   startSafeRange: 100
 --- !u!1 &1919437870
@@ -12036,7 +12038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1919437871
 Transform:
   m_ObjectHideFlags: 0
@@ -12045,7 +12047,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919437870}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0449, y: -0.025600003, z: 0.060999997}
+  m_LocalPosition: {x: -0, y: 0, z: 0.1079}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12067,14 +12069,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 2108066207}
-  bulletSpeed: 100
+  bulletSpeed: 500
   _as: {fileID: 1919437873}
   references: {fileID: 500227911}
-  gunCoolDown: 5
+  gunCoolDown: 0.2
   target: {fileID: 0}
   bulletSpawn: {fileID: 398414490}
-  gunType: 0
-  isPlayer: 0
+  gunType: 1
+  isPlayer: 1
 --- !u!82 &1919437873
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12268,6 +12270,7 @@ GameObject:
   - component: {fileID: 2108066211}
   - component: {fileID: 2108066210}
   - component: {fileID: 2108066214}
+  - component: {fileID: 2108066215}
   m_Layer: 6
   m_Name: GravityBullet
   m_TagString: Untagged
@@ -12283,7 +12286,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108066207}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.42, y: 0, z: 8.73}
+  m_LocalPosition: {x: -0, y: 0, z: 3.23}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12314,10 +12317,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108066207}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2108066212
 MeshRenderer:
@@ -12383,8 +12386,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPhysics: {fileID: 2108066210}
   references: {fileID: 500227911}
-  gravityConstant: 200
+  gravityConstant: 3000
   lockOrbit: 0
+--- !u!114 &2108066215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108066207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50b2cc135cf78d40b09b6871e3971e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GravityObjects:
+  - {fileID: 8257330965849141727}
+  objectPhysics: {fileID: 2108066210}
+  gravityConstant: 20
+  lockOrbit: 0
+  isEnemyProjectile: 0
+  hasChangedGravityOnce: 0
 --- !u!1 &2115128546
 GameObject:
   m_ObjectHideFlags: 0
@@ -12682,6 +12704,7 @@ MonoBehaviour:
   gravityConstant: 0.2
   lockOrbit: 1
   isEnemyProjectile: 0
+  hasChangedGravityOnce: 0
 --- !u!33 &1172532251242478971
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -17935,8 +17958,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxVelocity: {x: 300, y: 0, z: 300}
-  rotationSpeed: 1
-  noRotationMouseZone: 10
+  rotationSpeed: 1.5
+  noRotationMouseZone: 0
   turboCooldown: 0
   turboStrength: 200
   brakingStrength: 200
@@ -17960,6 +17983,7 @@ MonoBehaviour:
   gravityConstant: 0.4
   lockOrbit: 0
   isEnemyProjectile: 0
+  hasChangedGravityOnce: 0
 --- !u!135 &7400510439330703540
 SphereCollider:
   m_ObjectHideFlags: 0
