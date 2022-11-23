@@ -27,8 +27,10 @@ public class RandomRangeGenerator : MonoBehaviour
 
             //Create each asteroid and place it under the same parent
             objectsToPlace.Add(Instantiate(objectToSpawn, spawnPoint, Quaternion.Euler(Random.Range(0f,360f), Random.Range(0f, 360f), Random.Range(0f, 360f))));
-            objectsToPlace[i].transform.parent = this.transform;
             
+            objectsToPlace[i].transform.parent = this.transform;
+            objectsToPlace[i].name = name + i; ;
+
         }
 
         objectToSpawn.SetActive(false);

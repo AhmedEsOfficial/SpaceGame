@@ -5,9 +5,6 @@ using Unity.VisualScripting;
 using UnityEditor.Search;
 using UnityEngine;
 
-public enum GunType{Kinetic = 0, Gravity = 1, Explosive = 2
-
-}
 public class SpaceGun : MonoBehaviour
 {
     
@@ -20,7 +17,7 @@ public class SpaceGun : MonoBehaviour
     public Transform target;
 
     public Transform bulletSpawn;
-    public GunType gunType;
+    public ProjectileType gunType;
 
     public bool isPlayer;
 
@@ -45,25 +42,12 @@ public class SpaceGun : MonoBehaviour
         {
             if (!_isOnCoolDown)
             {
-                if (gunType == GunType.Gravity)
-                {
-                    CreateBullet(transform.forward);
 
-                }
-                if (gunType == GunType.Kinetic)
-                {
-                    ShootKinetic();
-                }
-
-                if (gunType == GunType.Explosive)
-                {
-                    CreateBullet(transform.forward);
-                }
-                
-
+                CreateBullet(transform.forward);
             }
         }
-        
+
+
     }
 
     public void Shoot()
@@ -90,25 +74,6 @@ public class SpaceGun : MonoBehaviour
         
     }
 
-    void ShootKinetic()
-    {
-        if (!_as.isPlaying)
-        {
-            _as.Play();
-
-        }
-        
-
-        CreateBullet(transform.forward);
-        //references.activeBulletsInScene.Add(CreateBullet(transform.forward));
-        //StartCoroutine(SelfDestructCountDown());
-    }
-
-    void ShootGravity()
-    {
-        CreateBullet(transform.forward);
-        StartCoroutine(GunCoolDown());
-    }
 
     void CreateBullet(Vector3 direction)
     {
@@ -126,9 +91,9 @@ public class SpaceGun : MonoBehaviour
         }
         
         GameObject newBullet = Instantiate(bullet, bulletSpawn.transform);
-        newBullet.transform.rotation = Quaternion.identity;
         newBullet.SetActive(true);
-        Rigidbody rb = newBullet.GetComponent<Rigidbody>();
+        Rigidbody rb = newBullet.GetComponentInChildren<Rigidbody>();
+        Debug.Log(rb.gameObject.name);
         rb.AddForce(bulletSpeed*direction,ForceMode.Impulse);
         _isOnCoolDown = true;
 

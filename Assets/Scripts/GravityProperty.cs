@@ -17,14 +17,13 @@ public class GravityProperty : MonoBehaviour
         
     Transform target;
     private Vector3 dir ;
+    
+    
+    
     // Start is called before the first frame update
     void Start()
     {
-        if (isEnemyProjectile)
-        {
-            GravityObjects[0] = GameObject.FindWithTag("Planet").GetComponent<Rigidbody>();
-        }
-
+        GravityObjects[0] = GameObject.FindWithTag("Planet").GetComponent<Rigidbody>();
     }
 
     public void AddGravityObject(Rigidbody rb)
@@ -32,15 +31,13 @@ public class GravityProperty : MonoBehaviour
         GravityObjects.Add(rb);
     }
 
-    public void ResetGravity()
+    public void ResetGravity(float G)
     {
         GravityObjects = new List<Rigidbody>();
-    }
-
-    public void AssignGravityConstant(float G)
-    {
         gravityConstant = G;
+
     }
+    
 
     public void LockOrbit(bool state)
     {
@@ -72,11 +69,6 @@ public class GravityProperty : MonoBehaviour
             
             }
         }
-        
-
-        
-        
-        
 
     }
 
