@@ -15,6 +15,10 @@ public class ProjectileDescription : ScriptableObject
 
 
     [SerializeField] public List<GameObject> modConfigs;
+    public float lifeTime;
+    
+    
+    
 
 
 }

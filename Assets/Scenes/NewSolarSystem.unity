@@ -11015,7 +11015,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
@@ -12127,7 +12127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1944370381299905696, guid: af04eb48bf55185489131ab2beedfdce, type: 3}
-  bulletSpeed: 300
+  bulletSpeed: 400
   _as: {fileID: 1919437873}
   references: {fileID: 500227911}
   gunCoolDown: 0

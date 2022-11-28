@@ -34,6 +34,7 @@ public class SpaceGun : MonoBehaviour
         {
             target = GameObject.FindWithTag("Player").transform;
         }
+       
     }
 
     void FixedUpdate()
@@ -93,7 +94,6 @@ public class SpaceGun : MonoBehaviour
         GameObject newBullet = Instantiate(bullet, bulletSpawn.transform);
         newBullet.SetActive(true);
         Rigidbody rb = newBullet.GetComponentInChildren<Rigidbody>();
-        Debug.Log(rb.gameObject.name);
         rb.AddForce(bulletSpeed*direction,ForceMode.Impulse);
         _isOnCoolDown = true;
 

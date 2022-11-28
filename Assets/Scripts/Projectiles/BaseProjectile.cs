@@ -15,14 +15,16 @@ public class BaseProjectile : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        rb = GetComponentInParent<Rigidbody>();
         List<GameObject> aP = projectileDescription.modConfigs;
 
 
         foreach (GameObject aM in aP)
         {
             Instantiate(aM, transform);
-            aM.GetComponent<ProjectileMod>().AssignRigidBody(rb);
             aM.SetActive(true);
+            
+            
         }
         
         

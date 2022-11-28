@@ -58,7 +58,6 @@ public class GravityProperty : MonoBehaviour
                                 (rb.position - objectPhysics.position);            //Newton came up with this
 
                 objectPhysics.AddForce(force);
-                //rb.AddForce(force);
                 if (lockOrbit)
                 {
                     dir = target.transform.position - transform.position;
