@@ -8,7 +8,8 @@ public class GravityProperty : MonoBehaviour
     public List<Rigidbody> GravityObjects;
     public Rigidbody objectPhysics;
 
-    public float gravityConstant;
+    [FormerlySerializedAs("gravityConstant")] [SerializeField]
+    private float _gravityConstant;
 
     public bool lockOrbit;
     public bool isEnemyProjectile;
@@ -34,7 +35,7 @@ public class GravityProperty : MonoBehaviour
     public void ResetGravity(float G)
     {
         GravityObjects = new List<Rigidbody>();
-        gravityConstant = G;
+        _gravityConstant = G;
 
     }
     
@@ -54,10 +55,12 @@ public class GravityProperty : MonoBehaviour
                 float distance = Vector3.Distance(objectPhysics.position, rb.position);
                 target = rb.transform;
                 dir = target.transform.position - transform.position;//direction from your object towards the target object what you will orbit (the other side of the plane)
-                Vector3 force = ((gravityConstant * objectPhysics.mass * rb.mass) / distance) *
+                Vector3 force = ((_gravityConstant * objectPhysics.mass * rb.mass) / distance) *
                                 (rb.position - objectPhysics.position);            //Newton came up with this
 
                 objectPhysics.AddForce(force);
+                
+                
                 if (lockOrbit)
                 {
                     dir = target.transform.position - transform.position;
